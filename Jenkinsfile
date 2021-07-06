@@ -6,9 +6,11 @@ pipeline {
             steps {
                 echo 'Building'
             }
-            stage('OS') {
-              steps {
-                echo 'Build OS'
+            stages {
+              stage('OS') {
+                steps {
+                  echo 'Build OS'
+                }
               }
             }
         }
