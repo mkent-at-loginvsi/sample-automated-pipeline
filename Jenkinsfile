@@ -1,66 +1,30 @@
 pipeline {
-    agent any
+  agent any
 
-    stages {
-        stage('Quick Build') {
-            steps {
-                echo 'Building'
-            }
-            stages {
-              stage('OS') {
-                steps {
-                  echo 'Build OS'
-                }
-              }
-            }
+  stages {
+    stage('Application Compatibility') {
+      stages {
+        stage ('Build OS') {
+          steps {
+            echo "1.1"
+          }
         }
-        stage('Deploy to Dev') {
-            // when {
-            //     branch 'develop'
-            // }
-            stages {
-                stage('Building Distributable Package') {
-                    steps {
-                        echo 'Building'
-                    }
-                }
-                stage('Archiving Package') {
-                    steps {
-                        echo 'Archiving Aritfacts'
-                    }
-                }
-                stage('Deploying Dev') {
-                    steps {
-                        echo 'Deploying'
-                        timeout(time:3, unit:'DAYS') {
-                            input message: "Approve build?"
-                        }
-                    }
-                }
-            }
-
+        stage ('Install Apps') {
+          steps {
+            echo "1.2"
+          }
         }
-        stage('Deploy to Test') {
-            when {
-                branch 'develop'
-            }
-            steps {
-                echo 'deploying..'
-                timeout(time:3, unit:'DAYS') {
-                    input message: "Approve build?"
-                }
-            }
-        }
-        stage('Deploy to Prod') {
-            when {
-                branch 'release'
-            }
-            steps {
-                timeout(time:3, unit:'DAYS') {
-                    input message: "Deploy to Prod?"
-                }
-                echo 'Deploying....'
-            }
-        }
+      }
     }
+
+    stage('Performance Testing') {
+      stages {
+        stage('Build OS') {
+          steps {
+            echo "2.1"
+          }
+        }
+      }
+    }
+  }
 }
