@@ -3,9 +3,25 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        echo "Running ${env.BUILD_ID}"
+        echo "Build Base OS"
+        echo "Validate OS Build"
+        echo "Install Applications"
+        echo "Seal Image"
+        echo "Publish Image"
       }
     }
-
+    stage('Test') {
+      steps {
+        echo "Deploy Image"
+        echo "Validate Image"
+        echo "Test Applications"
+        echo "Report Results"
+      }
+    }
+    stage('Promote') {
+      steps {
+        echo "Promote Image"
+      }
+    }
   }
 }
