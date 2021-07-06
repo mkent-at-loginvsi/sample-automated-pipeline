@@ -27,7 +27,7 @@ pipeline {
           }
         }
 
-      stage ('Test') {
+      stage ('Acceptance Test') {
         steps {
           echo 'Deploy Image from published template'
           echo 'Run Application Group Acceptance Test = Apps (Login Enterprisese Plugin - Desktop Connector?)'
@@ -59,9 +59,9 @@ pipeline {
             echo 'Deploy Image from published template (Login AM Plugin - Collection?)'
           }
         }
-        stage ('Load Test') {
+        stage ('Continuous Test') {
           steps {
-            echo 'Run Application Group Load Test = Apps (Login Enterprisese Plugin - Desktop Connector?)'
+            echo 'Run Application Group Continuous Test = Apps (Login Enterprisese Plugin - Desktop Connector?)'
           }
         }
       }
