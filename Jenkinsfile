@@ -6,6 +6,11 @@ pipeline {
             steps {
                 echo 'Building'
             }
+            stage('OS') {
+              steps {
+                echo 'Build OS'
+              }
+            }
         }
         stage('Deploy to Dev') {
             // when {
@@ -20,7 +25,6 @@ pipeline {
                 stage('Archiving Package') {
                     steps {
                         echo 'Archiving Aritfacts'
-                        archiveArtifacts artifacts: '/*.zip', fingerprint: true
                     }
                 }
                 stage('Deploying Dev') {
