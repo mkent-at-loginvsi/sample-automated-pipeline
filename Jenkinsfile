@@ -11,7 +11,6 @@ pipeline {
           echo 'Publish Image'
         }
       }
-
       stage('Test') {
         steps {
           echo 'Deploy Image'
@@ -20,13 +19,11 @@ pipeline {
           echo 'Report Results'
         }
       }
-
       stage('Promote') {
         steps {
           echo 'Promote Image'
         }
       }
-
     }
   }
 }
